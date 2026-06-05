@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini Reddit Forum</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+</head>
+<body class="container" style="padding-top: 20px;">
+    <nav>
+        <ul>
+            <li><strong><a href="/" style="text-decoration: none; font-size: 1.5rem;">🚀 Mini Forum</a></strong></li>
+        </ul>
+        <ul>
+            <li><small>Αρχική μορφή τύπου Reddit</small></li>
+        </ul>
+    </nav>
+    <hr>
+    
+    <main>
+        {% block content %} {% endblock %}
+    </main>
+    
+    <footer style="margin-top: 50px; text-align: center;">
+        <small>© 2026 Mini Forum - Built with Flask & Pico CSS</small>
+    </footer>
+</body>
+</html>
