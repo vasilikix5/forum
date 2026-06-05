@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section>
+    <h2>Δημιουργία Νέας Ερώτησης</h2>
+    <form action="/create" method="POST">
+        <div class="grid">
+            <input type="text" name="username" placeholder="Το ψευδώνυμό σου">
+            <input type="text" name="title" placeholder="Τίτλος ερώτησης (Σύντομος & σαφής)" required>
+        </div>
+        <textarea name="content" placeholder="Γράψε εδώ τις λεπτομέρειες της ερώτησής σου..." rows="4" required></textarea>
+        <button type="submit">Δημοσίευση στο Forum</button>
+    </form>
+</section>
+
+<hr>
+
+<section>
+    <h2>Πρόσφατες Ερωτήσεις</h2>
+    {% if posts %}
+        {% for post in posts %}
+        <article style="margin-bottom: 20px;">
+            <header>
+                <h3 style="margin: 0;"><a href="/post/{{ post.id }}">{{ post.title }}</a></h3>
+            </header>
+            <p>{{ post.content }}</p>
+            <footer>
+                <small>Δημοσιεύτηκε από: <strong>{{ post.username }}</strong> | {{ post.created_at }}</small>
+            </footer>
+        </article>
+        {% endfor %}
+    {% else %}
+        <p>Δεν υπάρχουν ακόμα ερωτήσεις στο forum. Κάνε την αρχή παραπάνω!</p>
+    {% endif %}
+</section>
+{% endblock %}
