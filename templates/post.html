@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<p><a href="/">← Πίσω στην Αρχική</a></p>
+
+<article>
+    <header>
+        <h2 style="margin: 0;">{{ post.title }}</h2>
+    </header>
+    <p style="white-space: pre-wrap;">{{ post.content }}</p>
+    <footer>
+        <small>Υποβλήθηκε από: <strong>{{ post.username }}</strong> | {{ post.created_at }}</small>
+    </footer>
+</article>
+
+<section style="margin-top: 40px;">
+    <h3>Σχόλια ({{ comments|length }})</h3>
+    
+    {% if comments %}
+        {% for comment in comments %}
+        <article style="padding: 15px; margin-left: 20px; border-left: 4px solid #0076ff; background-color: #f9f9f9;">
+            <p style="white-space: pre-wrap; margin-bottom: 5px;">{{ comment.content }}</p>
+            <small style="color: #666;">— Από τον/την: <strong>{{ comment.username }}</strong> στις {{ comment.created_at }}</small>
+        </article>
+        {% endfor %}
+    {% else %}
+        <p>Δεν υπάρχουν σχόλια ακόμα. Γίνε ο πρώτος που θα σχολιάσει!</p>
+    {% endif %}
+</section>
+
+<hr>
+
+<section>
+    <h3>Πρόσθεσε το σχόλιό σου</h3>
+    <form method="POST">
+        <input type="text" name="username" placeholder="Το ψευδώνυμό σου">
+        <textarea name="content" placeholder="Γράψε το σχόλιό σου εδώ..." rows="3" required></textarea>
+        <button type="submit" class="secondary">Υποβολή Σχολίου</button>
+    </form>
+</section>
+{% endblock %}
